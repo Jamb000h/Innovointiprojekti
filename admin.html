@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" />
+        <title>Admin</title>
+
+
+
+    </head>
+    <body>
+       <div id="container">
+       	<div id="headerbanner">
+       		<div id="logo">
+       			<img src="http://www.digia.com/Global/facelift/logo_web.png">
+       		</div>
+       		<div id="headertext">
+       			<h1 class="floatcenter">ADMIN</h1>
+       		</div>
+       		<div id="headermenu">
+       			<ul>
+              <li><a href="uusiliidi.html">+</a></li>
+    				  <li><a href="liidit.html">LIIDIT</a></li>
+    				  <li><a href="#">TILASTOT</a></li>
+              <li><a href="admin.html">ADMIN</a></li>
+          <li><a href="#" id="deleteAllData">DELETE ALL DATA</a></li>
+          <li><a href="#" id="generateTestData">GENERATE TEST DATA</a></li>
+				  <li class="floatright"><a href="#" id="profiiliNimi">PROFIILI</a></li>
+				 </ul>
+       		</div>
+       	</div>
+       	<div id="center_container">
+
+       	<div id="mainwindow">
+
+        <div class="form-style-5">
+
+        <form name="industryForm" id="industryForm">
+
+          <h3>Add Industry</h3>
+
+          <label for="industryName">Name</label> <br />
+
+          <input type="text" id="industryName"> <br />
+
+          <input type="submit" id="addIndustry" value="Add">
+
+        </form>
+
+        <form name="companyForm" id="companyForm">
+
+          <h3>Add Company</h3>
+
+          <label for="companyName">Name</label> <br />
+
+          <input type="text" id="companyName"> <br />
+
+          <label for="industryList">Industry</label> <br />
+
+          <select id="industryList">
+
+          </select> <br />
+
+          <input type="submit" id="addCompany" value="Add">
+
+        </form>
+
+        <form name="userForm" id="userForm">
+
+          <h3>Add user</h3>
+
+          <label for="userName">Name</label> <br />
+
+          <input type="text" id="userName"> <br />
+
+          <input type="submit" id="addUser" value="Add">
+
+        </form>
+
+        <form id="changeUserForm">
+
+          <h3>Change user</h3>
+
+          <select id="userNameList">
+
+          </select>
+
+          <input type="submit" id="changeUser" value="Change User" />
+
+        </form>
+
+        </div>
+
+       	</div>
+       	<div id="secondwindow">
+        <h3>Industries</h3>
+
+        <div id="industries">
+
+        </div>
+
+        <h3>Companies</h3>
+
+        <div id="companies">
+
+        </div>
+
+        <h3>Users</h3>
+
+        <div id="users">
+
+        </div>
+
+      </div>
+</div>
+<div id="bottom_menu">
+	<img src="http://www.digia.com/Global/facelift/logo_web.png" style="float:right;">
+</div>
+       </div>
+
+       <script src="js/scripts.js"></script>
+
+       <script>
+
+         var industries = getFromLocalStorage("industries");
+
+         var companies = getFromLocalStorage("companies");
+
+         displayIndustries();
+
+         displayCompanies();
+
+         displayUsers();
+
+         displayUser();
+
+         document.getElementById("industryForm").addEventListener("submit", function(evt) {
+           addIndustry();
+           evt.preventDefault();
+         }, false);
+
+         document.getElementById("companyForm").addEventListener("submit", function(evt) {
+           addCompany();
+           evt.preventDefault();
+         }, false);
+
+         document.getElementById("userForm").addEventListener("submit", function(evt) {
+           addUser();
+           evt.preventDefault();
+         }, false);
+
+         document.getElementById("changeUserForm").addEventListener("submit", function(evt) {
+           evt.preventDefault();
+           changeUser();
+         }, false);
+
+         document.getElementById("deleteAllData").addEventListener("click", function() {
+           deleteTestData("all");
+           document.location.reload(true);
+         }, false);
+
+         document.getElementById("generateTestData").addEventListener("click", function() {
+           generateTestData();
+         }, false);
+
+         getUserList();
+
+       </script>
+    </body>
+</html>

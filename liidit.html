@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    	  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" />
+        <title>Liidit</title>
+
+    </head>
+    <body>
+       <div id="container">
+       	<div id="headerbanner">
+       		<div id="logo">
+       			<img src="http://www.digia.com/Global/facelift/logo_web.png">
+       		</div>
+       		<div id="headertext">
+       			<h1 class="floatcenter">LIIDIT</h1>
+       		</div>
+       		<div id="headermenu">
+       			<ul>
+				  <li><a href="uusiliidi.html">+</a></li>
+				  <li><a href="liidit.html">LIIDIT</a></li>
+				  <li><a href="#">TILASTOT</a></li>
+          <li><a href="admin.html">ADMIN</a></li>
+				  <li class="floatright"><a href="#" id="profiiliNimi">PROFIILI</a></li>
+				 </ul>
+       		</div>
+       	</div>
+
+       	<div id="center_container">
+       	<div style="width:100%; text-align:center; padding-top: 200px;">
+       		<div id="sorter">
+       			<ul>
+				  <li>PÄIVÄYS</li>
+				  <li>KOMMENTIT</li>
+				  <li>A-Ö Ö-A</li>
+
+				 </ul>
+       		</div>
+       		<div id="lead_container">
+              <div id="lead_box" class="clicktoexpand">
+                  <div id="lead_box_text">
+                    <h2>Liidi 1</h2>
+                    <p>1.1.2015</p>
+                    <p>Testi liidi lisätty</p>
+                  </div>
+                  <div id="lead_box_popup">
+                    <h1 >2 uutta!</h1>
+                  </div>
+
+              </div>
+               <div class="expandedcontent">
+				<h3>3.5.2015</h3>
+              	<p><b>Matti Meikäläinen, Myyjä</b></p>
+              	<p>Keskustelin yrityksen kanssa, homma hoidossa!</p></div>
+              <div id="lead_box" class="clicktoexpand">
+                  <div id="lead_box_text">
+                    <h2>Liidi 2</h2>
+                    <p>2.5.2015</p>
+                    <p>Testi liidi lisätty, once again</p>
+                  </div>
+                  <div id="lead_box_popup">
+                    <h1>6 uutta!</h1>
+                  </div>
+
+
+              </div>
+              <div class="expandedcontent">
+              	<h3>3.5.2015</h3>
+              	<p><b>Matti Meikäläinen, Myyjä</b></p>
+              	<p>Keskustelin yrityksen kanssa, homma hoidossa!</p>
+              </div>
+
+              <div id="lead_box" class="clicktoexpand">
+                  <div id="lead_box_text">
+                    <h2>Liidi 3</h2>
+                    <p>6.8.2015</p>
+                    <p>Testi liidi lisätty, once again</p>
+                  </div>
+                  <div id="lead_box_popup">
+                    <h1>3 uutta!</h1>
+                  </div>
+
+              </div>
+              <div class="expandedcontent">
+              	<h3>3.5.2015</h3>
+              	<p><b>Matti Meikäläinen, Myyjä</b></p>
+              	<p>Keskustelin yrityksen kanssa, homma hoidossa!</p>
+              	 </div>
+
+
+          </div>
+
+
+
+       	</div>
+
+
+</div>
+     <div id="sideselector">
+          	<select id="industryList">
+			  <option value="toimiala">TOIMIALA</option>
+			</select>
+          	<select id="companyList">
+			  <option value="yritys">YRITYS</option>
+			</select>
+			<select>
+			  <option value="ajanjakso">AJANJAKSO</option>
+			</select>
+			<select>
+			  <option value="status">STATUS</option>
+			</select>
+          </div>
+<div id="bottom_menu">
+	<img src="http://www.digia.com/Global/facelift/logo_web.png" style="float:right;">
+</div>
+       </div>
+
+       <script src="js/scripts.js"></script>
+
+       <script>
+
+       var industries = getFromLocalStorage("industries");
+       var companies = getFromLocalStorage("companies");
+       var leads = getFromLocalStorage("leads");
+       // Parse lead dates from JSON strings
+       parseDates(leads);
+
+       var comments = getFromLocalStorage("comments");
+       // Parse comment dates from JSON strings
+       parseDates(comments);
+
+       displayLeads();
+
+       displayUser();
+
+       getCompanyList();
+
+       updateSelectLists();
+
+       $(document).ready(function() {
+         $(".expandedcontent").hide();
+       });
+
+       $(".clicktoexpand").on("click", function() {
+         $(this).next(".expandedcontent").slideToggle(500);
+       });
+
+       </script>
+    </body>
+</html>

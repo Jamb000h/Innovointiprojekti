@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" />
+        <title>Uusi liidi</title>
+
+
+
+    </head>
+    <body>
+       <div id="container">
+       	<div id="headerbanner">
+       		<div id="logo">
+       			<img src="http://www.digia.com/Global/facelift/logo_web.png">
+       		</div>
+       		<div id="headertext">
+       			<h1 class="floatcenter">LIIDILOMAKE</h1>
+       		</div>
+       		<div id="headermenu">
+       			<ul>
+              <li><a href="uusiliidi.html">+</a></li>
+    				  <li><a href="liidit.html">LIIDIT</a></li>
+    				  <li><a href="#">TILASTOT</a></li>
+              <li><a href="admin.html">ADMIN</a></li>
+				  <li class="floatright"><a href="#" id="profiiliNimi">PROFIILI</a></li>
+				 </ul>
+       		</div>
+       	</div>
+       	<div id="center_container">
+       		<div style="width:100%; height:100px; float:left; margin-top:70px;">
+       	       	<blockquote>
+				 Terve ja toimiva suhde markkinoinnin ja myynnin välillä edistää parempia ja haluttuja tuloksia. Molempien täytyy kuitenkin olla samaa mieltä siitä, että yksi avainasia menestykseen on liidit ja ennen kaikkea niiden laatu.
+				<cite>Digimoguuli</cite>
+				</blockquote>
+       			</div>
+       	<div id="mainwindow">
+
+       		<div class="form-style-5">
+<form id="leadForm">
+<fieldset>
+<legend><span class="number">1</span> Valitse yritys</legend>
+<label for="job">Yritys:</label>
+<select id="companyList" name="field4">
+<!--
+<optgroup label="IT">
+  <option value="Valitse Yritys">Valitse Yritys</option>
+  <option value="VeikonIT OY">VeikonIT OY</option>
+  <option value="Firma tmi">Firma tmi</option>
+  <option value="WeLoveIT">WeLoveIT</option>
+  <option value="Mokia">Mokia</option>
+</optgroup>
+<optgroup label="Muut">
+  <option value="Fatser">Fatser</option>
+  <option value="Puuseppä OY">Puuseppä OY</option>
+  <option value="Kalastusfirma">Kalastusfirma</option>
+ </optgroup>
+ -->
+</select>
+
+</fieldset>
+<fieldset>
+<legend><span class="number">2</span> Liidi</legend>
+<textarea name="field3" placeholder="Kerro liidistä" id="leadDescription"></textarea>
+<input type="text" id="hashtags" placeholder="esim. #projekti, #uusi...">
+<input type="checkbox" name="one" id="leadUrgency" />
+<label for="leadUrgency">Kiire</label>
+</fieldset>
+
+<input type="submit" value="Lähetä" />
+</form>
+</div>
+
+       	</div>
+       	<div id="secondwindow">
+       		<div id="floating_questions">
+       			<h2>Apukysymyksiä</h2>
+       		<ol>
+    <li><span>1.</span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante dolor, quis ultricies ipsum porta quis. </p></li>
+
+    <li><span>2.</span><p>Nam quis justo in augue auctor imperdiet. Curabitur aliquet orci sit amet est posuere consectetur.  </p></li>
+
+    <li><span>3.</span><p>Curabitur aliquet orci sit amet est posuere consectetur.  </p></li>
+  </ol>
+  </div>
+       	</div>
+       	       	<div style="width:100%; height:300px; float:left; margin-top:100px;">
+       	       	<blockquote>
+				 Parhaisiin myyntituloksiin päästään vain pitkäjänteisellä suhteiden hoitamisella ja liidien hoivaamisella aina ostohetkeen asti, <bigtext>ja siitä eteenpäin.</bigtext>
+				<cite>Digimoguuli</cite>
+				</blockquote>
+       			</div>
+</div>
+<div id="bottom_menu">
+	<img src="http://www.digia.com/Global/facelift/logo_web.png" style="float:right;">
+</div>
+       </div>
+
+       <script src="js/scripts.js"></script>
+
+       <script>
+
+       var industries = getFromLocalStorage("industries");
+
+       var companies = getFromLocalStorage("companies");
+
+       var leads = getFromLocalStorage("leads");
+
+       getCompanyList();
+
+       displayUser();
+
+       document.getElementById("leadForm").addEventListener("submit", function(evt) {
+         evt.preventDefault();
+         addLead();
+       }, false);
+
+       document.getElementById("companyList").addEventListener("change", function() {
+
+           var text = document.getElementById("companyList").options[this.selectedIndex].innerHTML;
+           displayHashtag(text);
+           var companyId = document.getElementById("companyList").value;
+           companyId = findObjectsByProperty(companies, "id", companyId);
+           var industryId = companyId[0].industry;
+           industryId = findObjectsByProperty(industries, "id", industryId);
+           displayHashtag(industryId[0].name);
+
+       }, false);
+
+       </script>
+    </body>
+</html>
